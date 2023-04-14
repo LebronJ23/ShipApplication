@@ -2,7 +2,7 @@
 using ShipsApi.Application.Common.Mappings;
 using ShipsApi.Application.Ships.Commands.Create;
 
-namespace ShipsApi.Models
+namespace ShipsApi.Models.Ships
 {
     public class CreateShipDto : IMapWith<CreateShipCommand>
     {

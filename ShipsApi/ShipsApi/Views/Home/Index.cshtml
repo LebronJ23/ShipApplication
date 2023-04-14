@@ -1,0 +1,50 @@
+﻿@model VoyageListViewModel
+
+<div class="m-2">
+    <h4 class="bg-primary text-white text-center p-2">Voyages</h4>
+    <table class="table table-sm table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Weight</th>
+                <th>Arrival</th>
+                <th>Sailed</th>
+                <th>Ship</th>
+                <th>Product</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (VoyageVm voyage in Model.Voyages.Voyages)
+            {
+                <tr>
+                    <td>@voyage.Id</td>
+                    <td>@voyage.Weight</td>
+                    <td>@voyage.Arrival</td>
+                    <td>@voyage.Sailed</td>
+                    <td>@voyage.Ship.Name</td>
+                    <td>@voyage.Product.Name</td>
+                    <td class="text-center">
+                        <a asp-action="Edit" 
+                            asp-route-id="@voyage.Id"
+                            asp-route-shipList="@Model.ShipList"
+                            asp-route-productList="@Model.ProductList"
+                            class="btn btn-sm btn-warning">
+                                Edit
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@voyage.Id" class="btn btn-sm btn-danger">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a 
+        asp-action="Create"
+        asp-route-shipList="@Model.ShipList"
+        asp-route-productList="@Model.ProductList"
+        class="btn btn-primary">
+            Create
+    </a>
+</div>

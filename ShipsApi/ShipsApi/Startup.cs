@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -32,11 +33,11 @@ namespace ShipsApi
             services.AddAutoMapper(opts =>
             {
                 opts.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
-                //opts.AddProfile(new AssemblyMappingProfile(typeof(IShipsDbContext).Assembly));
             });
             services.AddApplication();
             services.AddInfrastructure(Configuration);
-            services.AddControllers();
+            services.AddControllersWithViews();
+            services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
             services.AddCors(opts =>
             {
                 opts.AddPolicy("AllowAll", policy =>

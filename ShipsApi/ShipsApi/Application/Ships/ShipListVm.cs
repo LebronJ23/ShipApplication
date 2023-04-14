@@ -4,6 +4,6 @@ namespace ShipsApi.Application.Ships
 {
     public class ShipListVm
     {
-        public IList<ShipVm> Ships { get; set; }
+        public IList<ShipVm> Ships { get; set; } = new List<ShipVm>();
     }
 }

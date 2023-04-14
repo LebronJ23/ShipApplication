@@ -1,0 +1,24 @@
+﻿@model CreateProductViewModel
+
+<div class="m-2">
+    <h5 class="bg-secondary text-white text-center p-2">Create New Product</h5>
+
+    <form asp-action="Create" method="post">
+        <div class="form-group">
+            <label asp-for="@Model.Name"></label>
+            <div>
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+            <input class="form-control" asp-for="@Model.Name" />
+        </div>
+
+        <button class="btn btn-primary" type="submit">Create</button>
+        <a class="btn btn-outline-primary"
+           asp-controller="@Model.ReturnController"
+           asp-action="@Model.ReturnAction"
+           asp-route-id="@Model.VoyageId">
+            Cancel
+        </a>
+    </form>
+
+</div>

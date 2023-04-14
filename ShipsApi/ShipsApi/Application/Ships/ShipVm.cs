@@ -7,7 +7,7 @@ using ShipsApi.Entities;
 
 namespace ShipsApi.Application.Ships
 {
-    public class ShipVm : IMapWith<Ship>
+    public class ShipVm : IMapWith<Ship>, IMapWith<CreateShipCommand>, IMapWith<UpdateShipCommand>, IMapWith<DeleteShipCommand>
     {
         public int Id { get; set; }
         public string Name { get; set; }

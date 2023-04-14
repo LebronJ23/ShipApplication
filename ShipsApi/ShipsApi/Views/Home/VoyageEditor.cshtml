@@ -1,0 +1,91 @@
+﻿@model VoyageViewModel
+
+<h3 class="bg-@Model.Theme text-white text-center p-2">
+    @Model.Action
+</h3>
+
+<form asp-controller="Home" asp-action="@Model.Action" method="post" class="m-2">
+    <div class="form-group m-2">
+        <label asp-for="@Model.Voyage.Id"></label>
+        <div>
+            <span asp-validation-for="@Model.Voyage.Id" class="text-danger"></span>
+        </div>
+        <input class="form-control" asp-for="@Model.Voyage.Id" readonly />
+    </div>
+
+    <div class="form-group m-2">
+        <label asp-for="@Model.Voyage.Weight"></label>
+        <div>
+            <span asp-validation-for="@Model.Voyage.Weight" class="text-danger"></span>
+        </div>
+        <input class="form-control" asp-for="@Model.Voyage.Weight" readonly="@Model.ReadOnly" />
+    </div>
+
+    <div class="form-group m-2">
+        <label asp-for="@Model.Voyage.Arrival"></label>
+        <div>
+            <span asp-validation-for="@Model.Voyage.Arrival" class="text-danger"></span>
+        </div>
+        <input class="form-control" asp-for="@Model.Voyage.Arrival" readonly="@Model.ReadOnly" />
+    </div>
+
+    <div class="form-group m-2">
+        <label asp-for="@Model.Voyage.Sailed"></label>
+        <div>
+            <span asp-validation-for="@Model.Voyage.Sailed" class="text-danger"></span>
+        </div>
+        <input class="form-control" asp-for="@Model.Voyage.Sailed" readonly="@Model.ReadOnly" />
+    </div>
+
+    <div class="form-group m-2">
+        <label asp-for="@Model.Voyage.ProductId">
+            Product
+            @if (!Model.ReadOnly)
+            {
+                <input type="hidden" name="returnAction" value="@Model.Action" />
+                <button class="btn btn-sm btn-outline-primary ml-3" 
+                asp-controller="ProductView" 
+                asp-action="Create"
+                asp-route-returnController="Home"
+                formmethod="get" formnovalidate>
+                    Create New Product
+                </button>
+            }
+        </label>
+        <div>
+            <span asp-validation-for="@Model.Voyage.ProductId" class="text-danger"></span>
+        </div>
+        <select asp-for="@Model.Voyage.ProductId" class="form-control" disabled="@Model.ReadOnly" readonly="@Model.ReadOnly"
+                asp-items="@(new SelectList(Model.Products.Products, "Id", "Name"))">
+            <option value="" disabled selected>Choose a Product</option>
+        </select>
+    </div>
+
+    <div class="form-group m-2">
+        <label asp-for="@Model.Voyage.ShipId">
+            Ship
+            @if (!Model.ReadOnly)
+            {
+                <input type="hidden" name="returnAction" value="@Model.Action" />
+                <button class="btn btn-sm btn-outline-primary ml-3" 
+                asp-controller="ShipView" 
+                asp-action="Create"
+                asp-route-returnController="Home"
+                formmethod="get" formnovalidate>
+                    Create New Ship
+                </button>
+            }
+        </label>
+        <div>
+            <span asp-validation-for="@Model.Voyage.ShipId" class="text-danger"></span>
+        </div>
+        <select asp-for="@Model.Voyage.ShipId" class="form-control" disabled="@Model.ReadOnly" readonly="@Model.ReadOnly"
+                asp-items="@(new SelectList(Model.Ships.Ships, "Id", "Name"))">
+            <option value="" disabled selected>Choose a Ship</option>
+        </select>
+    </div>
+    
+    <button class="btn m-2 btn-@Model.Theme" type="submit">@Model.Action</button>
+    
+    <a class="btn m-2 btn-secondary" asp-controller="Home" asp-action="Index">Back</a>
+</form>

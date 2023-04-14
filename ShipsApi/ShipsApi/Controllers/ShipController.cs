@@ -8,7 +8,7 @@ using ShipsApi.Application.Ships.Commands.Create;
 using ShipsApi.Application.Ships.Commands.Update;
 using ShipsApi.Application.Ships.Commands.Delete;
 using ShipsApi.Application.Ships;
-using ShipsApi.Models;
+using ShipsApi.Models.Ships;
 
 namespace ShipsApi.Controllers
 {
