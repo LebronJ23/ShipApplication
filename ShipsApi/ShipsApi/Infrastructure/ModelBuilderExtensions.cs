@@ -35,7 +35,8 @@ namespace ShipsApi.Infrastructure
                 new Voyage { Id = 5, Weight = 1000, Arrival = DateTime.Now.AddDays(1), Sailed = DateTime.Now.AddDays(2), ShipId = 3, ProductId = 5 },
                 new Voyage { Id = 6, Weight = 1000, Arrival = DateTime.Now.AddDays(1), Sailed = DateTime.Now.AddDays(2), ShipId = 2, ProductId = 6 },
                 new Voyage { Id = 7, Weight = 1000, Arrival = DateTime.Now.AddDays(1), Sailed = DateTime.Now.AddDays(2), ShipId = 1, ProductId = 1 },
-                new Voyage { Id = 8, Weight = 1000, Arrival = DateTime.Now.AddDays(2), Sailed = DateTime.Now.AddDays(3), ShipId = 7, ProductId = 2 }
+                new Voyage { Id = 8, Weight = 1000, Arrival = DateTime.Now.AddDays(2), Sailed = DateTime.Now.AddDays(3), ShipId = 7, ProductId = 2 },
+                new Voyage { Id = 9, Weight = 300, Arrival = DateTime.Now.AddDays(-1), Sailed = DateTime.Now.AddHours(-12), ShipId = 1, ProductId = 3 }
             );
         }
     }
