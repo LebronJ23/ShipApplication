@@ -25,25 +25,25 @@ function loadData() {
         url: '/Home/GetVoyages',
         method: 'GET',
         success: (result) => {
-            $.each(result.underLoading, (k, v) => {
-                console.log(k);
-
-                drawShip(underLoadingGroup,
-                    [
-                        { label: 'ShipName', value: v.shipName },
-                        { label: 'Arrival', value: new Date(v.arrival).toLocaleString() }
-                    ], 10, yOffset + k * 130, 'red');
-            })
             $.each(result.onTheWay, (k, v) => {
                 console.log(k);
 
                 drawShip(onTheWayGroup,
                     [
                         { label: 'ShipName', value: v.shipName },
+                        { label: 'Arrival', value: new Date(v.arrival).toLocaleString() }
+                    ], 10, yOffset + k * 130, 'green');
+            })
+            $.each(result.underLoading, (k, v) => {
+                console.log(k);
+
+                drawShip(underLoadingGroup,
+                    [
+                        { label: 'ShipName', value: v.shipName },
                         { label: 'ProductName', value: v.productName },
                         { label: 'Weight', value: v.weight },
                         { label: 'Arrival', value: new Date(v.arrival).toLocaleString() }
-                    ], percentValue*35, yOffset + k * 130, 'green');
+                    ], percentValue * 35, yOffset + k * 130, 'yellow');
             })
             $.each(result.gone, (k, v) => {
                 console.log(k);
@@ -54,7 +54,7 @@ function loadData() {
                         { label: 'Weight', value: v.weight },
                         { label: 'ArrivalDate', value: new Date(v.arrival).toLocaleString() },
                         { label: 'Sailed', value: new Date(v.sailed).toLocaleString() }
-                    ], percentValue*68, yOffset + k * 130, 'yellow');
+                    ], percentValue * 68, yOffset + k * 130, 'red');
             })
         },
         error: (error) => {
@@ -73,10 +73,10 @@ function drawTable() {
     draw.line(0, 0, '100%', 0).stroke({ width: 1, color: 'green' })
     draw.line(0, '100%', '100%', '100%').stroke({ width: 1, color: 'green' })
     draw.text(function (add) {
-        add.tspan('Under Loading')
+        add.tspan('On the Way')
     }).attr({ x: '16%', y: 50 })
     draw.text(function (add) {
-        add.tspan('On the Way')
+        add.tspan('Under Loading')
     }).attr({ x: '49%', y: 50 })
     draw.text(function (add) {
         add.tspan('Gone')
