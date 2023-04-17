@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ShipsApi.Application;
 using ShipsApi.Entities;
 using System;
 
@@ -28,15 +29,15 @@ namespace ShipsApi.Infrastructure
             );
 
             modelBuilder.Entity<Voyage>().HasData(
-                new Voyage { Id = 1, Weight = 1000, Arrival = DateTime.Now, Sailed = DateTime.Now.AddDays(1), ShipId = 7, ProductId = 1 },
-                new Voyage { Id = 2, Weight = 1000, Arrival = DateTime.Now, Sailed = DateTime.Now.AddDays(1), ShipId = 6, ProductId = 2 },
-                new Voyage { Id = 3, Weight = 1000, Arrival = DateTime.Now, Sailed = DateTime.Now.AddDays(1), ShipId = 5, ProductId = 3 },
-                new Voyage { Id = 4, Weight = 1000, Arrival = DateTime.Now.AddDays(1), Sailed = DateTime.Now.AddDays(2), ShipId = 4, ProductId = 4 },
-                new Voyage { Id = 5, Weight = 1000, Arrival = DateTime.Now.AddDays(1), Sailed = DateTime.Now.AddDays(2), ShipId = 3, ProductId = 5 },
-                new Voyage { Id = 6, Weight = 1000, Arrival = DateTime.Now.AddDays(1), Sailed = DateTime.Now.AddDays(2), ShipId = 2, ProductId = 6 },
-                new Voyage { Id = 7, Weight = 1000, Arrival = DateTime.Now.AddDays(1), Sailed = DateTime.Now.AddDays(2), ShipId = 1, ProductId = 1 },
-                new Voyage { Id = 8, Weight = 1000, Arrival = DateTime.Now.AddDays(2), Sailed = DateTime.Now.AddDays(3), ShipId = 7, ProductId = 2 },
-                new Voyage { Id = 9, Weight = 300, Arrival = DateTime.Now.AddDays(-1), Sailed = DateTime.Now.AddHours(-12), ShipId = 1, ProductId = 3 }
+                new Voyage { Id = 1, Weight = 1000, Arrival = DateTime.Now.Truncate(TimeSpan.FromMinutes(1)), Sailed = DateTime.Now.AddDays(1).Truncate(TimeSpan.FromMinutes(1)), ShipId = 7, ProductId = 1 },
+                new Voyage { Id = 2, Weight = 1000, Arrival = DateTime.Now.Truncate(TimeSpan.FromMinutes(1)), Sailed = DateTime.Now.AddDays(1).Truncate(TimeSpan.FromMinutes(1)), ShipId = 6, ProductId = 2 },
+                new Voyage { Id = 3, Weight = 1000, Arrival = DateTime.Now.Truncate(TimeSpan.FromMinutes(1)), Sailed = DateTime.Now.AddDays(1).Truncate(TimeSpan.FromMinutes(1)), ShipId = 5, ProductId = 3 },
+                new Voyage { Id = 4, Weight = 1000, Arrival = DateTime.Now.AddDays(1).Truncate(TimeSpan.FromMinutes(1)), Sailed = DateTime.Now.AddDays(2).Truncate(TimeSpan.FromMinutes(1)), ShipId = 4, ProductId = 4 },
+                new Voyage { Id = 5, Weight = 1000, Arrival = DateTime.Now.AddDays(1).Truncate(TimeSpan.FromMinutes(1)), Sailed = DateTime.Now.AddDays(2).Truncate(TimeSpan.FromMinutes(1)), ShipId = 3, ProductId = 5 },
+                new Voyage { Id = 6, Weight = 1000, Arrival = DateTime.Now.AddDays(1).Truncate(TimeSpan.FromMinutes(1)), Sailed = DateTime.Now.AddDays(2).Truncate(TimeSpan.FromMinutes(1)), ShipId = 2, ProductId = 6 },
+                new Voyage { Id = 7, Weight = 1000, Arrival = DateTime.Now.AddDays(1).Truncate(TimeSpan.FromMinutes(1)), Sailed = DateTime.Now.AddDays(2).Truncate(TimeSpan.FromMinutes(1)), ShipId = 1, ProductId = 1 },
+                new Voyage { Id = 8, Weight = 1000, Arrival = DateTime.Now.AddDays(2).Truncate(TimeSpan.FromMinutes(1)), Sailed = DateTime.Now.AddDays(3).Truncate(TimeSpan.FromMinutes(1)), ShipId = 7, ProductId = 2 },
+                new Voyage { Id = 9, Weight = 300, Arrival = DateTime.Now.AddDays(-1).Truncate(TimeSpan.FromMinutes(1)), Sailed = DateTime.Now.AddHours(-12).Truncate(TimeSpan.FromMinutes(1)), ShipId = 1, ProductId = 3 }
             );
         }
     }

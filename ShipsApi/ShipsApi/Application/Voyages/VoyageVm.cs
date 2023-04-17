@@ -14,8 +14,8 @@ namespace ShipsApi.Application.Voyages
     {
         public int Id { get; set; }
         public float Weight { get; set; }
-        public DateTime Arrival { get; set; } = DateTime.UtcNow.Date;
-        public DateTime Sailed { get; set; } = DateTime.UtcNow.Date.AddDays(1);
+        public DateTime Arrival { get; set; } = DateTime.Now.Truncate(TimeSpan.FromMinutes(1));
+        public DateTime Sailed { get; set; } = DateTime.Now.AddDays(1).Truncate(TimeSpan.FromMinutes(1));
 
         public int ShipId { get; set; }
         public ShipVm Ship { get; set; }

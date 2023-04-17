@@ -31,7 +31,7 @@ function loadData() {
                 drawShip(underLoadingGroup,
                     [
                         { label: 'ShipName', value: v.shipName },
-                        { label: 'Arrival', value: new Date(v.arrival).toLocaleDateString() }
+                        { label: 'Arrival', value: new Date(v.arrival).toLocaleString() }
                     ], 10, yOffset + k * 130, 'red');
             })
             $.each(result.onTheWay, (k, v) => {
@@ -42,7 +42,7 @@ function loadData() {
                         { label: 'ShipName', value: v.shipName },
                         { label: 'ProductName', value: v.productName },
                         { label: 'Weight', value: v.weight },
-                        { label: 'Arrival', value: new Date(v.arrival).toLocaleDateString() }
+                        { label: 'Arrival', value: new Date(v.arrival).toLocaleString() }
                     ], percentValue*35, yOffset + k * 130, 'green');
             })
             $.each(result.gone, (k, v) => {
@@ -52,8 +52,8 @@ function loadData() {
                         { label: 'ShipName', value: v.shipName },
                         { label: 'ProductName', value: v.productName },
                         { label: 'Weight', value: v.weight },
-                        { label: 'ArrivalDate', value: new Date(v.arrival).toLocaleDateString() },
-                        { label: 'Sailed', value: new Date(v.sailed).toLocaleDateString() }
+                        { label: 'ArrivalDate', value: new Date(v.arrival).toLocaleString() },
+                        { label: 'Sailed', value: new Date(v.sailed).toLocaleString() }
                     ], percentValue*68, yOffset + k * 130, 'yellow');
             })
         },
